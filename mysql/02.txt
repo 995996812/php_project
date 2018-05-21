@@ -1,0 +1,63 @@
+/* 
+字段属性的使用
+*/
+create table tab_shuxing(
+	id int auto_increment primary key, 
+	user_name varchar(20) not null unique key,
+	password varchar(48) not null,
+	age tinyint default 18,
+	email varchar(50) comment '电子邮箱'
+);
+
+insert into tab_shuxing (id, user_name, password, age, email) values
+	(1, 'user1', '1234', 20, 'admin@163.com');
+
+insert into tab_shuxing (id, user_name, password, age, email) values
+	(null, 'user2', md5('1234'), null, 'admin123@163.com');
+
+insert into tab_shuxing (user_name, password, email) values
+	('user3', md5('12345'),'admin123@163.com');
+
+
+#索引创建语法
+create table tab_index(
+	id int auto_increment,
+	user_name varchar(20),
+	email varchar(50),
+	key(email), /*这个是普通索引*/
+	primary key (id),/*这就是主键索引*/
+	unique key(user_name) /* 这个就是唯一索引*/
+);
+
+#演示外键索引
+create table banji(
+	id int auto_increment primary key,
+	banjihao varchar(10) unique key comment '班级号',
+	banzhuren varchar(10) comment '班主任',
+	open_date date comment '开班日期'
+);
+
+create table xuesheng(
+	stu_id int auto_increment primary key,
+	name varchar(10),
+	age tinyint,
+	class_id int comment '班级id',
+	foreign key (class_id) references banji(id)
+);
+
+#演示表选项语法
+create table tab_xuanxiang(
+	id int auto_increment primary key,
+	name varchar(10),
+	age tinyint
+)
+charset = gbk, /*当前数据库的字符编码是utf8*/
+engine = MyIsam,
+auto_increment = 1000,
+comment = '说明文字'
+;
+
+
+insert into tab_xuanxiang(id,name,age) values
+		(null, '张三', 11);
+
