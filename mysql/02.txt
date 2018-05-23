@@ -57,7 +57,48 @@ auto_increment = 1000,
 comment = '说明文字'
 ;
 
+insert into tab_xuanxiang(id,name,age) values (null, '张三', 11);
 
-insert into tab_xuanxiang(id,name,age) values
-		(null, '张三', 11);
+//自增自涨表
+create table day_9(
+	id int auto_increment,
+	salary float comment '工资',
+	postcode char(6) comment '邮编',
+	name varchar(9),
+	reg_time datetime comment '注册日期',
+	birtday date comment '生日',
+	intro text comment '自我介绍',
+	sex enum('男','女'),
+	aihao set('足','蓝','排','羽'),
+	primary key(id),
+	key(name)
+) engine=InnoDB, charset=utf8;
+//给表中添加一个int字段,默认为18
+alter table day_9 add age int default 18;
+//修改表中char类型字段设定的长度
+alter table day_9 change postcode postcode char(8) comment '邮编';
+//修改表名
+alter table day_9 rename to day_99;
+
+
+/*
+插入数据
+ */
+insert into banji values(1, 22, '李雷', '2018-3-4'); //第一种
+
+replace into tab_zhujian2 values(1,'bb'); //第二种
+
+insert into tab_zhujian2 select *from tab_zhijian1; //第三种数据插入
+/*
+ 删除数据
+ */
+delete from banji where id=1;
+
+/*
+修改数据
+ */
+update banji set banzhuren='王红' where id = 1;
+
+
+
 
