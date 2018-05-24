@@ -99,6 +99,12 @@ delete from banji where id=1;
  */
 update banji set banzhuren='王红' where id = 1;
 
+/*
+基本查询
+ */
+select 8, 8+3,concat('aa','bb'),now();
+//修改别名
+select 8 as f1,8+3 as jieguo, now() as 时间;
 
 
 
