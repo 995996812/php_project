@@ -104,7 +104,37 @@ update banji set banzhuren='王红' where id = 1;
  */
 select 8, 8+3,concat('aa','bb'),now();
 //修改别名
-select 8 as f1,8+3 as jieguo, now() as 时间;
+select 8 as f1,8+3 as jieguo, now() as 时间;	
 
 
+create table tab_int(
+	f1 int,
+	f2 tinyint,
+	f3 int
+);
 
+/*
+创建一个存储过程,带三个参数,调用该存储过程,可用将此3个参数作为数据写入的某个表中
+ */
+
+create procedure pro1(p1 int, p2 tinyint, p3 int)
+begin 
+	insert into tab_int(f1,f2,f3) values (p1,p2,p3);
+end;
+
+call pro1(333,44,555);
+
+/*
+创建一个存储函数,带三个参数,调用该存储函数,可用将此3个参数作为数据写入的某个表中
+ */
+create function func1(p1 int, p2 tinyint, p3 int)
+returns int
+begin
+	insert into tab_int(f1,f2,f3)values(p1,p2,p3);
+	return 1;
+end;
+//select @v1 := func1(3333,44,5555);
+使用场景1:
+select func1(3333,44,5555) as f1;
+使用场景2:
+select *from stu where id = func1(3333,44,5555);
