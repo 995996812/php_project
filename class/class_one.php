@@ -38,7 +38,7 @@ class Dream extends MyDream
 {
 	function what(){
 		echo "111";
-	}
+	}	
 	
 }
 
