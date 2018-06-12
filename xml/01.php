@@ -13,6 +13,7 @@ $doc->formatOutput=true; //设置格式化输出
 $books = $doc->createElement('books');//创建一个元素节点
 
 foreach ($array as $value) {
+	
 	$book = $doc->createElement('book');
 	$books->appendChild($book);//在元素的罪名添加子元素
 	$name = $doc->createElement('name',$value['name']);//创建name节点,并赋值
