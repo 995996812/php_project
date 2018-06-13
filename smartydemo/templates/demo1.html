@@ -4,12 +4,33 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>TODO supply a title</title>
+	<!-- 操作配置文件		 -->
+	<!-- 导入配置文件 -->
+	{config_load file='smarty.conf' section='two'}
+	<style>
+		div{ width: {#width#};height: {#height#};border: {#border#};background-color: {#backgroundcolor#};}
+	</style>
 </head>
 <body>
+
 	{$name}
 	<!-- 获取php中定义的一个会话 -->
 	{$smarty.session.country}
 	<!-- 获取php中定义的cookie -->
-	{$smarty.cookies.school}
+	{$smarty.cookies.school}<br>	
+
+	{$stu[0]}<br>
+	{$stu.0}
+	<hr>
+	{$emp.name}<br>
+	{$emp['name']}
+	<hr>
+
+	<!-- 读取配置文件 -->
+	<!-- 取值 -->
+	{#host#}<br>
+	{#username#}<br>
+	{#pwd#}<br>
+	<div></div>
 </body>
 </html>
