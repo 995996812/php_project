@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>foreach</title>
+	<style>
+		.first{
+			background-color: red;
+		}
+		.last{
+			background-color: green;
+		}
+		.even{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<!-- 数组取值 -->
+	<!-- {$stu[1]} -->
+	<!-- forech的使用 -->
+	<table width="500" border="1" bordercolor="#000000" align="center">
+		<tr>
+			<th>是否是第一个元素</th>
+			<th>编号</th>
+			<th>索引</th>
+			<th>键</th>
+			<th>值</th>
+			<th>是否是最后一个元素</th>
+		</tr>
+		{foreach $stu as $k=>$v}
+		{if $v@first}
+			<tr class="first">
+		{elseif $v@last}
+			<tr class="last">
+		{elseif $v@iteration%2==0}
+			<tr class="even">
+		{else}
+			<tr>
+		{/if}
+			<td>{$v@first}</td>
+			<td>{$v@iteration}</td>
+			<td>{$v@index}</td>
+			<td>{$k}</td>
+			<td>{$v}</td>
+			<td>{$v@last}</td>
+		</tr>
+		{/foreach}
+	</table>
+	一共有{$v@total}条数据 <br>
+	{$v@show} <br>
+	<!-- foreach中的关键字 
+		@iteration 编号从1开始
+		@index 索引从0开始
+		@first 是否是第一个元素 是返回1 不是返回空
+		@last 是否是最好一个元素 是返回1 不是返回空
+		@total 一共有多少数据
+		@show 数组是否为空  不为空返回1 为空返回空
+	-->
+
+	您的成绩是{$score} <br>
+	{if $score>=90}
+		优<br>
+	{else if $score>=60}
+		中<br>
+	{else 60>$score}
+		差<br>
+	{/if}
+
+	{section name=one loop=$onearray}  
+<!--  	index={$smarty.section.one.index},  
+ 	index_prev={$smarty.section.one.index_prev},  
+ 	index_next={$smarty.section.one.index_next},  
+ 	first={$smarty.section.one.first},  
+ 	last={$smarty.section.one.last},  
+ 	iteration ={$smarty.section.one.iteration},  --> 
+ 	<!-- total={$smarty.section.one.total},   -->
+ 	value={$onearray[one]}<br />  
+	{/section} 
+
+</body>
+</html>
