@@ -67,16 +67,28 @@
 		差<br>
 	{/if}
 
+	<!-- section循环 -->
+<!--  
 	{section name=one loop=$onearray}  
-<!--  	index={$smarty.section.one.index},  
+ 	index={$smarty.section.one.index},  
  	index_prev={$smarty.section.one.index_prev},  
  	index_next={$smarty.section.one.index_next},  
  	first={$smarty.section.one.first},  
  	last={$smarty.section.one.last},  
- 	iteration ={$smarty.section.one.iteration},  --> 
- 	<!-- total={$smarty.section.one.total},   -->
+ 	iteration ={$smarty.section.one.iteration},  
+ 	total={$smarty.section.one.total},  
  	value={$onearray[one]}<br />  
-	{/section} 
+	{/section}  -->
 
+	<!-- for循环 -->
+	{for $i=1 to 10}
+		{$i} :11111 <br>
+	{/for}
+
+	<!-- while循环 -->
+	{assign var='i' value=1}
+	{while 10>$i}
+		{$i++}:22222 <br>
+	{/while}
 </body>
 </html>
